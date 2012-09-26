@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 1.9.3
-  - rbx19mode
+  - rbx-19mode
 before_install:
   - gem update bundler
 before_script:
