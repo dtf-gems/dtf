@@ -1,5 +1,7 @@
+language: ruby
 rvm:
   - 1.9.3
+  - rbx19mode
 before_install:
   - gem update bundler
 before_script:
@@ -7,7 +9,6 @@ before_script:
   - RAILS_ENV='development' bundle exec rake db:migrate
   - RAILS_ENV='development' bundle exec gem list
 script: RAILS_ENV='development' bundle exec rspec spec --format doc
-language: ruby
 notifications:
   irc:
     channels:
