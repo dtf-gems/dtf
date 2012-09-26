@@ -7,16 +7,11 @@ module Dtf
   load "#{File.join(File.dirname(__FILE__), "/config/environment.rb")}"
   
   module Command
-    def self.create_cmd(cmd)
-      puts "#{@cmd}"
-      begin
-        new_cmd = Dtf::Command.const_get(cmd.camelize).new    
-      rescue NameError  
-        puts "DTF has no registered command by that name."
-        puts "Please see 'dtf -h' for the list of recognized commands."
-      else
-        return new_cmd
-      end
+    def self.create_cmd(cmd, options)
+      Dtf::Command.const_get(cmd.camelize).new(cmd, options)    
+    rescue NameError  
+      puts "DTF has no registered command by that name."
+      puts "Please see 'dtf -h' for the list of recognized commands."
     end
 
     # This sub-command is used to add a User to the Test Framework system
@@ -28,18 +23,23 @@ module Dtf
     # '--full-name' is the Real Name of the created User.
     # '--email-address' is the email address of the created User, and *must* be unique in the system.
     class CreateUser
-      def execute(cmd_opts)
-        if [:user_name_given, :full_name_given, :email_address_given].all? { |sym| cmd_opts.key?(sym) } then
-          user = User.where(user_name:     cmd_opts[:user_name],
-                             full_name:     cmd_opts[:full_name],
-                             email_address: cmd_opts[:email_address]).create
+      def initialize(cmd_name, options)
+        @cmd_name = cmd_name
+        @cmd_opts = options
+      end
+      
+      def execute
+        if [:user_name_given, :full_name_given, :email_address_given].all? { |sym| @cmd_opts.key?(sym) } then
+          user = User.where(user_name:     @cmd_opts[:user_name],
+                             full_name:     @cmd_opts[:full_name],
+                             email_address: @cmd_opts[:email_address]).create
 
           # Check to make sure user was actually saved to the db
           if user.persisted? then
-            puts "Created user \'#{cmd_opts[:user_name]}\' for \'#{cmd_opts[:full_name]}\'"
+            puts "Created user \'#{@cmd_opts[:user_name]}\' for \'#{@cmd_opts[:full_name]}\'"
           else
             # Oops, it wasn't! Notify user and display any error message(s)
-            $stderr.puts "ERROR: #{cmd_opts[:user_name].to_s} was NOT created! Please fix the following errors and try again:"
+            $stderr.puts "ERROR: #{@cmd_opts[:user_name].to_s} was NOT created! Please fix the following errors and try again:"
             user.errors.full_messages.each do |msg|
               $stderr.puts "#{msg}"
             end
@@ -47,7 +47,7 @@ module Dtf
             abort()
           end
         else
-          Dtf::ErrorSystem.raise_error(@cmd) # This error here is thrown when not all params are provided
+          Dtf::ErrorSystem.raise_error(@cmd_name) # This error here is thrown when not all params are provided
         end
       end
     end
@@ -66,18 +66,23 @@ module Dtf
     # This *optional* parameter is for providing a description of the Verification Suite's use.
     # e.g. --description "RSpec Verification"
     class CreateVs
-      def execute(cmd_opts)
-        if [:user_name_given, :name_given].all? { |sym| cmd_opts.key?(sym) } then
-          user = User.find_by_user_name(cmd_opts[:user_name])
-          vs   = user.verification_suites.create(name: cmd_opts[:name], description: cmd_opts[:description])
+      def initialize(cmd_name, options)
+        @cmd_name = cmd_name
+        @cmd_opts = options
+      end
+      
+      def execute
+        if [:user_name_given, :name_given].all? { |sym| @cmd_opts.key?(sym) } then
+          user = User.find_by_user_name(@cmd_opts[:user_name])
+          vs   = user.verification_suites.create(name: @cmd_opts[:name], description: @cmd_opts[:description])
           if vs.persisted? then
-            puts "VS named \'#{cmd_opts[:name]}\' allocated to user \'#{cmd_opts[:user_name]}\'"
+            puts "VS named \'#{@cmd_opts[:name]}\' allocated to user \'#{@cmd_opts[:user_name]}\'"
           else
             $stderr.puts "ERROR: Failed to save Verification Suite. Check DB logfile for errors"
             abort()
           end
         else
-          Dtf::ErrorSystem.raise_error(@cmd)
+          Dtf::ErrorSystem.raise_error(@cmd_name)
         end
       end
     end
@@ -99,15 +104,20 @@ module Dtf
     # This flag will find all Verification Suites owned by the user being deleted, and reassign them
     # to 'Library Owner' (user_name: library_owner) which is the generic in-house User shipped with DTF.
     class DeleteUser
-      def execute(cmd_opts)
-        if [:user_name_given, :delete_all].all? { |sym| cmd_opts.key?(sym) } then
+      def initialize(cmd_name, options)
+        @cmd_name = cmd_name
+        @cmd_opts = options
+      end
+      
+      def execute
+        if [:user_name_given, :delete_all].all? { |sym| @cmd_opts.key?(sym) } then
           # NOTE: :delete_all is 'true' by default. passing '--no-delete-all' sets it to false,
           # and adds the :delete_all_given key to the cmd_opts hash, set to true.
           # This means NOT to delete all VSs associated with this user. We delete them by default.
-          if cmd_opts[:delete_all] == false && cmd_opts[:delete_all_given] == true
+          if @cmd_opts[:delete_all] == false && @cmd_opts[:delete_all_given] == true
             puts "Called with '--no-delete-all' set! NOT deleting all owned VSs!"
             puts "Reassigning VSs to Library. New owner will be \'Library Owner\'"
-            user      = User.find_by_user_name(cmd_opts[:user_name])
+            user      = User.find_by_user_name(@cmd_opts[:user_name])
             lib_owner = User.find_by_user_name("library_owner")
             user.verification_suites.all.each do |vs|
               vs.user_id = lib_owner.id
@@ -115,8 +125,8 @@ module Dtf
             end
             User.delete(user)
           else
-            puts "Called with '--delete-all' set or on by default! Deleting all VSs owned by #{cmd_opts[:user_name]}"
-            user = User.find_by_user_name(cmd_opts[:user_name])
+            puts "Called with '--delete-all' set or on by default! Deleting all VSs owned by #{@cmd_opts[:user_name]}"
+            user = User.find_by_user_name(@cmd_opts[:user_name])
             if ! user.nil? then
               user.verification_suites.all.each do |vs|
                 VerificationSuite.delete(vs)
@@ -125,12 +135,12 @@ module Dtf
                 User.delete(user)
               end
             else
-              $stderr.puts "ERROR: No user named \'#{cmd_opts[:user_name].to_s}\' found!"
+              $stderr.puts "ERROR: No user named \'#{@cmd_opts[:user_name].to_s}\' found!"
               abort()
             end
           end
         else
-          Dtf::ErrorSystem.raise_error(@cmd)
+          Dtf::ErrorSystem.raise_error(@cmd_name)
         end
       end
     end
@@ -143,14 +153,19 @@ module Dtf
     # The '--user-name' parameter is the user_name of the User that owns the Verification Suite you wish to delete
     # The '--id' parameter is the ID # of the Verification Suite you wish to delete, as provided by @vs.id
     class DeleteVs
-      def execute(cmd_opts)
-        if [:user_name_given, :id_given].all? { |sym| cmd_opts.key?(sym) } then
-          puts "Deleting #{cmd_opts[:user_name]}\'s VS with ID \'#{cmd_opts[:id]}\'"
-          user = User.find_by_user_name(cmd_opts[:user_name])
-          vs   = user.verification_suites.find(cmd_opts[:id])
+      def initialize(cmd_name, options)
+        @cmd_name = cmd_name
+        @cmd_opts = options
+      end
+      
+      def execute
+        if [:user_name_given, :id_given].all? { |sym| @cmd_opts.key?(sym) } then
+          puts "Deleting #{@cmd_opts[:user_name]}\'s VS with ID \'#{@cmd_opts[:id]}\'"
+          user = User.find_by_user_name(@cmd_opts[:user_name])
+          vs   = user.verification_suites.find(@cmd_opts[:id])
           VerificationSuite.delete(vs)
         else
-          Dtf::ErrorSystem.raise_error(@cmd)
+          Dtf::ErrorSystem.raise_error(@cmd_name)
         end
       end
     end
@@ -214,27 +229,27 @@ module Dtf
         stop_on SUB_COMMANDS
       end
 
-      @cmd = arg.shift
-      @cmd_opts = case @cmd
+      cmd = arg.shift
+      cmd_opts = case cmd
       when "create_user"
-        Trollop::options do
+        Trollop::options args do
           opt(:user_name, desc="Username for new TF user - REQUIRED", opts={:type => :string, :short => '-u'})
           opt(:full_name, desc="Real name for new TF user - REQUIRED", opts={:type => :string, :short => '-n'})
           opt(:email_address, desc="Email address for new TF user - REQUIRED", opts={:type => :string, :short => '-e'})
         end
       when "create_vs"
-        Trollop::options do
+        Trollop::options args do
           opt(:user_name, desc="TF user to associate this VS with - REQUIRED", opts={:type => :string, :short => '-u'})
           opt(:name, desc="Name for new VS - REQUIRED", opts={:type => :string, :short => '-n'})
           opt(:description, desc="Description of VS's intended use - OPTIONAL", opts={:type => :string, :short => '-d', :default => ''})
         end
       when "delete_user"
-        Trollop::options do
+        Trollop::options args do
           opt(:user_name, desc="Username of TF user to delete - REQUIRED", opts={:type => :string, :short => '-u'})
           opt(:delete_all, desc="Delete _all_ VSs this user owns", :type => :flag, :default => true)
         end
       when "delete_vs"
-        Trollop::options do
+        Trollop::options args do
           opt(:user_name, desc="Username of VS owner - REQUIRED", opts={:type => :string, :short => '-u'})
           opt(:id, desc="ID of VS to be deleted - REQUIRED", opts={:type => :int, :short => '-i'})
         end
@@ -244,7 +259,7 @@ module Dtf
         Trollop::die "Unknown DTF sub-command: #{@cmd.inspect}"
       end
       
-      return @cmd, @cmd_opts # Explicitly return @cmd and its @cmd_opts 
+      return cmd, cmd_opts # Explicitly return cmd and its cmd_opts 
     end
   end
   
