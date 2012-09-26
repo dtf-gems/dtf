@@ -30,8 +30,8 @@ step "I execute 'create_user'" do
               delete_all: true
               }
 
-  @new_cmd = Dtf::Command.create_cmd(@cmd)
-  @new_cmd.execute(@cmd_opts)
+  new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
+  new_cmd.execute
 end
 
 step "I should find 'testuser' in the database" do
@@ -50,8 +50,8 @@ step "I should not find 'testuser' in the database" do
                 user_name_given: true,
                 delete_all: false
                 }
-  @new_cmd = Dtf::Command.create_cmd(@cmd)
-  @new_cmd.execute(@cmd_opts)
+  new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
+  new_cmd.execute
 end
 
 step "I execute 'create_vs'" do
@@ -65,8 +65,9 @@ step "I execute 'create_vs'" do
               description_given: true
               }
 
-  @new_cmd = Dtf::Command.create_cmd(@cmd)
-  @new_cmd.execute(@cmd_opts)
+  new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
+  new_cmd.execute
+
 end
 
 step "I should find a VS in the database" do
@@ -82,8 +83,9 @@ step "I execute 'delete_vs'" do
               user_name_given: true,
               id_given: true
               }
-  @new_cmd = Dtf::Command.create_cmd(@cmd)
-  @new_cmd.execute(@cmd_opts)
+  new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
+  new_cmd.execute
+
 end
 
 step "I should not find a VS in the database" do
