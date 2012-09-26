@@ -26,8 +26,7 @@ step "I execute 'create_user'" do
               email_address: "me@example.com",
               user_name_given: true,
               full_name_given: true,
-              email_address_given: true,
-              delete_all: true
+              email_address_given: true
               }
 
   new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
@@ -41,17 +40,31 @@ end
 
 step "I execute 'delete_user'" do
   send "I execute 'create_user'"
-end
 
-step "I should not find 'testuser' in the database" do
   @cmd = "delete_user"
   @cmd_opts = { user_name: "testuser",
-                delete_all_given: true,
                 user_name_given: true,
-                delete_all: false
+                delete_all: true
                 }
   new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
   new_cmd.execute
+end
+
+step "I execute 'delete_user' setting --no-delete-all" do
+  send "I execute 'create_user'"
+
+  @cmd = "delete_user"
+  @cmd_opts = {user_name: "testuser", 
+              user_name_given: true,
+              delete_all: false,
+              delete_all_given: true
+              }
+
+  new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
+  new_cmd.execute
+end
+
+step "I should not find 'testuser' in the database" do
 end
 
 step "I execute 'create_vs'" do
@@ -85,7 +98,6 @@ step "I execute 'delete_vs'" do
               }
   new_cmd = Dtf::Command.create_cmd(@cmd, @cmd_opts)
   new_cmd.execute
-
 end
 
 step "I should not find a VS in the database" do
