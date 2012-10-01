@@ -14,6 +14,28 @@ module Dtf
       puts "Please see 'dtf -h' for the list of recognized commands."
     end
 
+    # Copies thor tasks into any project which require's dtf
+    # e.g bundle exec dtf setup
+    class SetupDtf
+      def initialize(cmd_name, options)
+        @cmd_name = cmd_name
+        @cmd_opts = options
+      end
+      
+      def execute
+        if "#{Gem.loaded_specs['dtf'].gem_dir}" == "#{Dir.pwd}"
+          $stderr.puts "Copying files over themselves is not usually good. Aborting!"
+          abort()
+        elsif ! File.exists?("#{Dir.pwd}/lib/tasks/setup.thor")
+          puts "Installing DTF tasks"
+          FileUtils.cp(Dir.glob("#{File.join("#{Gem.loaded_specs['dtf'].gem_dir}", 'lib/tasks/*')}"), "#{Dir.pwd}/lib/tasks/")
+        else
+          $stderr.puts "Copying files over themselves is not usually good. Aborting!"
+          abort()
+        end
+      end    
+    end
+    
     # This sub-command is used to add a User to the Test Framework system
     #
     # Required Parameters are:
@@ -201,7 +223,7 @@ module Dtf
   # It also doubles as DTF's help system.
   class OptionsParser
     # List of all sub-commands known within the Help System
-    SUB_COMMANDS = %w(create_user delete_user create_vs delete_vs)
+    SUB_COMMANDS = %w(create_user delete_user create_vs delete_vs setup)
     
     # ARGV parsing method and options builder. Method depends on Trollop gem.
     #
@@ -252,6 +274,10 @@ module Dtf
         Trollop::options do
           opt(:user_name, desc="Username of VS owner - REQUIRED", opts={:type => :string, :short => '-u'})
           opt(:id, desc="ID of VS to be deleted - REQUIRED", opts={:type => :int, :short => '-i'})
+        end
+      when "setup_dtf"
+        Trollop::options do
+          opt(:install, desc="Defines if should install or not", opts={:type => :flag, :default => true})
         end
       when nil
         Trollop::die "No command specified! Please specify an applicable command"
