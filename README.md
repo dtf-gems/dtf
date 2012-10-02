@@ -184,4 +184,8 @@ Options:
            --help, -h:   Show this message
 ```
 
+An unlisted command is 'setup_dtf'. This command is for use by sub-gems in the DTF framework.
+It copies the thor task from DTF's master gem 'dtf' to the proper directory in the sub-gem, or
+a project that makes use of the dtf master gem. It is referenced, but not shown here, for that reason.
+
 Enjoy!
