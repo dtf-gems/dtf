@@ -14,8 +14,9 @@ module Dtf
       puts "Please see 'dtf -h' for the list of recognized commands."
     end
 
-    # Copies thor tasks into any project which require's dtf
-    # e.g bundle exec dtf setup
+    # Copies Thor task(s) into any project which require's the DTF master gem (this gem)
+    # and then calls 'setup_dtf' sub-command. 
+    # e.g bundle exec dtf setup_dtf
     class SetupDtf
       def initialize(cmd_name, options)
         @cmd_name = cmd_name

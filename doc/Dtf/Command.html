@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: Dtf::Command
+  Module: Dtf::Command
   
     &mdash; Documentation by YARD 0.8.2.1
   
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: Dtf::Command
+    <div id="content"><h1>Module: Dtf::Command
   
   
   
@@ -71,21 +71,6 @@
 
 <dl class="box">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
-      <span class="inheritName">Object</span>
-      
-        <ul class="fullTree">
-          <li>Object</li>
-          
-            <li class="next">Dtf::Command</li>
-          
-        </ul>
-        <a href="#" class="inheritanceTree">show all</a>
-      
-      </dd>
-    
-  
   
     
   
@@ -93,26 +78,23 @@
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/dtf.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/dtf.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Dtf::Command contains all sub-commands availabe in the DTF master gem. All
-methods receive the @cmd and @cmd_opts returned by
-Dtf::OptionsParser.parse_cmds()</p>
-
-
-  </div>
-</div>
-<div class="tags">
+<h2>Defined Under Namespace</h2>
+<p class="children">
   
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Command/CreateUser.html" title="Dtf::Command::CreateUser (class)">CreateUser</a></span>, <span class='object_link'><a href="Command/CreateVs.html" title="Dtf::Command::CreateVs (class)">CreateVs</a></span>, <span class='object_link'><a href="Command/DeleteUser.html" title="Dtf::Command::DeleteUser (class)">DeleteUser</a></span>, <span class='object_link'><a href="Command/DeleteVs.html" title="Dtf::Command::DeleteVs (class)">DeleteVs</a></span>, <span class='object_link'><a href="Command/SetupDtf.html" title="Dtf::Command::SetupDtf (class)">SetupDtf</a></span>
+    
+  
+</p>
 
-</div>
 
 
 
@@ -130,7 +112,7 @@ Dtf::OptionsParser.parse_cmds()</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_user-class_method" title="create_user (class method)">+ (Object) <strong>create_user</strong>(cmd, cmd_opts) </a>
+      <a href="#create_cmd-class_method" title="create_cmd (class method)">+ (Object) <strong>create_cmd</strong>(cmd, options) </a>
     
 
     
@@ -144,107 +126,7 @@ Dtf::OptionsParser.parse_cmds()</p>
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>This sub-command is used to add a User to the Test Framework system.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#create_vs-class_method" title="create_vs (class method)">+ (Object) <strong>create_vs</strong>(cmd, cmd_opts) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>This sub-command generates, adds, and associates a Verification Suite in
-the Testing Framework system.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#delete_user-class_method" title="delete_user (class method)">+ (Object) <strong>delete_user</strong>(cmd, cmd_opts) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>This sub-command removes a User from the Testing Framework system.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#delete_vs-class_method" title="delete_vs (class method)">+ (Object) <strong>delete_vs</strong>(cmd, cmd_opts) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>This sub-command removes a Verification Suite from the Testing Framework
-system.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#process-class_method" title="process (class method)">+ (Object) <strong>process</strong>(cmd, cmd_opts) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Process both the requested command and all/any parameters.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -259,433 +141,35 @@ system.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="create_user-class_method">
+  <h3 class="signature first" id="create_cmd-class_method">
   
-    + (<tt>Object</tt>) <strong>create_user</strong>(cmd, cmd_opts) 
-  
-
+    + (<tt>Object</tt>) <strong>create_cmd</strong>(cmd, options) 
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>This sub-command is used to add a User to the Test Framework system</p>
 
-<p>Required Parameters are:</p>
-
-<pre class="code ruby"><code>--user-name [String], --full-name [String], --email-address [String]</code></pre>
-
-<p>'--user-name' is used to specify the user_name of the created User, and
-<b>must</b> be unique in the system. '--full-name' is the Real Name of the
-created User. '--email-address' is the email address of the created User,
-and <b>must</b> be unique in the system.</p>
-
-
-  </div>
-</div>
-<div class="tags">
   
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164</pre>
+10
+11
+12
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_user'>create_user</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='symbol'>:user_name_given</span><span class='comma'>,</span> <span class='symbol'>:full_name_given</span><span class='comma'>,</span> <span class='symbol'>:email_address_given</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sym'>sym</span><span class='op'>|</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='kw'>then</span>
-    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>user_name:</span>     <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='comma'>,</span>
-                       <span class='label'>full_name:</span>     <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:full_name</span><span class='rbracket'>]</span><span class='comma'>,</span>
-                       <span class='label'>email_address:</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:email_address</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span>
-
-    <span class='comment'># Check to make sure user was actually saved to the db
-</span>    <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='kw'>then</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Created user \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\' for \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:full_name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>else</span>
-      <span class='comment'># Oops, it wasn't! Notify user and display any error message(s)
-</span>      <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'> was NOT created! Please fix the following errors and try again:</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_full_messages'>full_messages</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
-        <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_msg'>msg</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>end</span>
-      <span class='comment'># Now throw a proper error code to the system, while exiting the script
-</span>      <span class='id identifier rubyid_abort'>abort</span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='const'>Dtf</span><span class='op'>::</span><span class='const'>ErrorSystem</span><span class='period'>.</span><span class='id identifier rubyid_raise_error'>raise_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span> <span class='comment'># This error here is thrown when not all params are provided
-</span>  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="create_vs-class_method">
-  
-    + (<tt>Object</tt>) <strong>create_vs</strong>(cmd, cmd_opts) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>This sub-command generates, adds, and associates a Verification Suite in
-the Testing Framework system.</p>
-
-<p>Required Parameters are:</p>
-
-<pre class="code ruby"><code>--user-name [String], --name [String]</code></pre>
-
-<p>'--user-name' is the user_name of the User that should own this
-Verification Suite. '--name' is the descriptive name of the Verification
-Suite.</p>
-
-<p>Options are:</p>
-
-<pre class="code ruby"><code>--description [String]</code></pre>
-
-<p>This <b>optional</b> parameter is for providing a description of the
-Verification Suite's use. e.g. --description "RSpec Verification"</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 231</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_vs'>create_vs</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='symbol'>:user_name_given</span><span class='comma'>,</span> <span class='symbol'>:name_given</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sym'>sym</span><span class='op'>|</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='kw'>then</span>
-    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_name'>find_by_user_name</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_vs'>vs</span>   <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_verification_suites'>verification_suites</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>description:</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:description</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_vs'>vs</span><span class='period'>.</span><span class='id identifier rubyid_persisted?'>persisted?</span> <span class='kw'>then</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VS named \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\' allocated to user \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
-    <span class='kw'>else</span>
-      <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR: Failed to save Verification Suite. Check DB logfile for errors</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_abort'>abort</span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='const'>Dtf</span><span class='op'>::</span><span class='const'>ErrorSystem</span><span class='period'>.</span><span class='id identifier rubyid_raise_error'>raise_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_user-class_method">
-  
-    + (<tt>Object</tt>) <strong>delete_user</strong>(cmd, cmd_opts) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>This sub-command removes a User from the Testing Framework system</p>
-
-<p>Required Parameters are:</p>
-
-<pre class="code ruby"><code>--user-name [String]</code></pre>
-
-<p>'--user-name' is the assigned user_name of the User you wish to delete.</p>
-
-<p>Optional Flags are:</p>
-
-<pre class="code ruby"><code><span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_delete'>delete</span><span class='op'>-</span><span class='id identifier rubyid_all'>all</span><span class='op'>|</span><span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_no'>no</span><span class='op'>-</span><span class='id identifier rubyid_delete'>delete</span><span class='op'>-</span><span class='id identifier rubyid_all'>all</span></code></pre>
-
-<p>By default this command will delete <b>all</b> Verification Suites owned by
-the deleted user. The default behaviour is as if the sub-command had been
-invoked passing the '--delete-all' flag explicitly.</p>
-
-<p>To delete the user, but <b>keep</b> their VS, pass the '--no-delete-all'
-flag. This flag will find all Verification Suites owned by the user being
-deleted, and reassign them to 'Library Owner' (user_name: library_owner)
-which is the generic in-house User shipped with DTF.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 182</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete_user'>delete_user</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='symbol'>:user_name_given</span><span class='comma'>,</span> <span class='symbol'>:delete_all</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sym'>sym</span><span class='op'>|</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='kw'>then</span>
-    <span class='comment'># NOTE: :delete_all is 'true' by default. passing '--no-delete-all' sets it to false,
-</span>    <span class='comment'># and adds the :delete_all_given key to the cmd_opts hash, set to true.
-</span>    <span class='comment'># This means NOT to delete all VSs associated with this user. We delete them by default.
-</span>    <span class='kw'>if</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:delete_all</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>false</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:delete_all_given</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>true</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_content'> called with '--no-delete-all' set! NOT deleting all owned VSs!</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Reassigning VSs to Library. New owner will be \'Library Owner\'</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_user'>user</span>      <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_name'>find_by_user_name</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_lib_owner'>lib_owner</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_name'>find_by_user_name</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>library_owner</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_verification_suites'>verification_suites</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vs'>vs</span><span class='op'>|</span>
-        <span class='id identifier rubyid_vs'>vs</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_lib_owner'>lib_owner</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
-        <span class='id identifier rubyid_vs'>vs</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-      <span class='kw'>end</span>
-      <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_content'> called with '--delete-all' set or on by default! Deleting all VSs owned by </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_name'>find_by_user_name</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-      <span class='kw'>if</span> <span class='op'>!</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>then</span>
-        <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_verification_suites'>verification_suites</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vs'>vs</span><span class='op'>|</span>
-          <span class='const'>VerificationSuite</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_vs'>vs</span><span class='rparen'>)</span>
-        <span class='kw'>end</span>
-        <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_verification_suites'>verification_suites</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='kw'>then</span>
-          <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
-        <span class='kw'>end</span>
-      <span class='kw'>else</span>
-        <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR: No user named \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_content'>\' found!</span><span class='tstring_end'>&quot;</span></span>
-        <span class='id identifier rubyid_abort'>abort</span><span class='lparen'>(</span><span class='rparen'>)</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='const'>Dtf</span><span class='op'>::</span><span class='const'>ErrorSystem</span><span class='period'>.</span><span class='id identifier rubyid_raise_error'>raise_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_vs-class_method">
-  
-    + (<tt>Object</tt>) <strong>delete_vs</strong>(cmd, cmd_opts) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>This sub-command removes a Verification Suite from the Testing Framework
-system</p>
-
-<p>Required Parameters are:</p>
-
-<pre class="code ruby"><code>--user-name [String], --id [Integer]</code></pre>
-
-<p>The '--user-name' parameter is the user_name of the User that owns the
-Verification Suite you wish to delete The '--id' parameter is the ID # of
-the Verification Suite you wish to delete, as provided by @vs.id</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 253</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete_vs'>delete_vs</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='symbol'>:user_name_given</span><span class='comma'>,</span> <span class='symbol'>:id_given</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_sym'>sym</span><span class='op'>|</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='kw'>then</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_content'> called! Deleting </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\'s VS with ID \'</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>\'</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_user_name'>find_by_user_name</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:user_name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_vs'>vs</span>   <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_verification_suites'>verification_suites</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='const'>VerificationSuite</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_vs'>vs</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='const'>Dtf</span><span class='op'>::</span><span class='const'>ErrorSystem</span><span class='period'>.</span><span class='id identifier rubyid_raise_error'>raise_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="process-class_method">
-  
-    + (<tt>Object</tt>) <strong>process</strong>(cmd, cmd_opts) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Process both the requested command and all/any parameters. NOTE: This
-method is the 'master' method. It parses @cmd for which sub-command to
-execute and then hands off to the appropriate method. All methods are a 1:1
-match in their name. e.g 'create_user' sub-command is matched to the
-'create_user' method of this class.</p>
-
-<p>This method requires, and processes, 2 arguments. The first is a String,
-the second is a Hash. They are the 'cmd' to process and any
-options/parameters, stored in the 'cmd_opts' hash, of that sub-command.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 115</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_cmd'>cmd</span>
-    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>create_user</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_user'>create_user</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-
-    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>delete_user</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete_user'>delete_user</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-
-    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>create_vs</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_vs'>create_vs</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-
-    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>delete_vs</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete_vs'>delete_vs</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_cmd_opts'>cmd_opts</span><span class='rparen'>)</span>
-
-    <span class='kw'>else</span>
-      <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unknown DTF sub-command: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_abort'>abort</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_cmd'>create_cmd</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'>Dtf</span><span class='op'>::</span><span class='const'>Command</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='period'>.</span><span class='id identifier rubyid_camelize'>camelize</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>    
+<span class='kw'>rescue</span> <span class='const'>NameError</span>  
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DTF has no registered command by that name.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Please see 'dtf -h' for the list of recognized commands.</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -697,7 +181,7 @@ options/parameters, stored in the 'cmd_opts' hash, of that sub-command.</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Sep 20 10:37:21 2012 by
+  Generated on Mon Oct  1 20:33:52 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>

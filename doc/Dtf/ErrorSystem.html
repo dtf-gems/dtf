@@ -213,16 +213,16 @@ return the @user object's full error messages, 1 per line.</p>
       <pre class="lines">
 
 
-27
-28
-29
-30
-31
-32
-33</pre>
+214
+215
+216
+217
+218
+219
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_display_errors'>display_errors</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='comment'># TODO: Refactor error display to take sub-command as an arg
@@ -263,20 +263,16 @@ via abort().</p>
       <pre class="lines">
 
 
-13
-14
-15
-16
-17
-18
-19</pre>
+202
+203
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/dtf.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_raise_error'>raise_error</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span>
-<span class='kw'>rescue</span>
   <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ERROR! </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_content'> did not receive all required options.</span><span class='tstring_end'>&quot;</span></span>
   <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Please execute \'dtf </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cmd'>cmd</span><span class='rbrace'>}</span><span class='tstring_content'> -h\' for more information.</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_abort'>abort</span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -291,7 +287,7 @@ via abort().</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Sep 20 10:37:21 2012 by
+  Generated on Mon Oct  1 20:33:52 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
