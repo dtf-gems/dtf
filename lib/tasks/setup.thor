@@ -14,8 +14,8 @@ class DtfSetup < Thor
     # 
     # Migrations
     from_dir = "#{File.join("#{Gem.loaded_specs['dtf'].gem_dir}", 'db/migrate')}"
-    # Add schema.rb and seeds to list of additional files to be pushed
-    other_files = ["#{from_dir}/../schema.rb", "#{from_dir}/../seeds.rb"]
+    # Add schema.rb to list of additional files to be pushed
+    other_files = ["#{from_dir}/../schema.rb"]
     
     other_files.each do |source|
       puts "Generating db/#{File.basename(source)}"
