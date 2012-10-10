@@ -17,11 +17,11 @@ class DtfSetup < Thor
     # Add schema.rb to list of additional files to be pushed
     other_files = ["#{from_dir}/../schema.rb"]
     # Since the models may change in DTF, copy them over as well. This ensures all sub-gems have current models.
-    models = "#{File.join("Gem.loaded_specs['dtf'].gemdir}", 'app/models')}"
+    models_dir = "#{File.join("#{Gem.loaded_specs['dtf'].gem_dir}", 'app/models')}"
 
-    models.each do |model|
+    Dir["#{models_dir}/#{name}"].each do |model|
       puts "Generating app/models/#{File.basename(model)}"
-      FileUtils.cp(model, "#{Dir.pwd}/app/models/#{File.basename(source)}" )
+      FileUtils.cp(model, "#{Dir.pwd}/app/models/#{File.basename(model)}" )
     end
 
     other_files.each do |source|
