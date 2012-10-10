@@ -8,7 +8,7 @@ before_script:
   - RAILS_ENV='development' bundle exec gem list
   - RAILS_ENV='development' bundle exec thor dtf_setup:config
   - RAILS_ENV='development' bundle exec rake db:migrate
-  - RAILS_ENV='development' bundle exec rspec spec --format doc
+  - RAILS_ENV='development' bundle exec rspec spec --profile --format doc
 script: RAILS_ENV='production' gem build dtf.gemspec
 notifications:
   irc:
