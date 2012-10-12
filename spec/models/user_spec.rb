@@ -34,9 +34,6 @@ describe "User" do
     it "should have a valid user_name, full_name, and email_address" do
       user.should be_valid
       user.errors.should be_empty
-      user.user_name.should_not be_nil
-      user.full_name.should_not be_nil
-      user.email_address.should_not be_nil
     end
 
     it "should be saved" do
