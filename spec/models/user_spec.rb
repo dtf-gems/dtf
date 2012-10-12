@@ -6,36 +6,24 @@ describe "User" do
 
   context "when instantiated" do
 
-    let(:user) { User.new }
-    
-    it "should be the proper class" do
-      user.should be_a(User)      
+    it "should be the proper class" do      
+      Fabricate.build(:user).should be_a(User)      
     end
 
     it "should be invalid without a user_name" do    
-      user.should_not be_valid
-      user.errors.should_not be_empty
-      user.errors.messages[:user_name].should eq(["can't be blank"])
-      user.new_record?.should be_true
+      Fabricate.build(:user, user_name: nil).should_not be_valid
     end  
   
     it "should be invalid without an email_address" do    
-      user.should_not be_valid
-      user.errors.should_not be_empty
-      user.errors.messages[:email_address].should eq(["can't be blank"])
-      user.new_record?.should be_true
+      Fabricate.build(:user, email_address: nil).should_not be_valid
     end
     
     it "should be invalid without a full_name" do    
-      user.should_not be_valid
-      user.errors.should_not be_empty
-      user.errors.messages[:full_name].should eq(["can't be blank"])
-      user.new_record?.should be_true
+      Fabricate.build(:user, full_name: nil).should_not be_valid
     end
 
     it "should not be saved" do
-      user.new_record?.should be_true
-      user.persisted?.should_not be_true
+      Fabricate.build(:user).new_record?.should be_true
     end
 
   end  
