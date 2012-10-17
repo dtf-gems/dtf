@@ -1,3 +1,6 @@
+[![Code
+Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/dtf-gems/dtf)
+
 # Deryls Testing Framework
 
 DTF is designed to be a modular framework for testing everything from shell scripts, to Ruby, to Rails apps.
