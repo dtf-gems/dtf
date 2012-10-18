@@ -17,7 +17,7 @@ class VerificationSuite < ActiveRecord::Base
   validates_presence_of :name, :description
 
   belongs_to :user, :autosave => :true
-  has_many :analysis_cases, :dependent => :destroy
-  has_many :case_tests, :through => :analysis_cases, :dependent => :destroy
+  has_many :analysis_cases, :include => :case_tests, :dependent => :destroy
+  has_many :case_tests, :through => :analysis_cases, :include => :analysis_cases, :dependent => :destroy
 
 end
