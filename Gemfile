@@ -24,7 +24,12 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec'
+  gem 'rspec-given'
+  gem 'fabrication'
   gem 'cover_me'
+  gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 gemspec
