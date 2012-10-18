@@ -18,8 +18,7 @@ install:
   - bundle install --without development
 before_script:
   - bundle exec gem list
-  - bundle exec thor dtf_setup:config
-  - bundle exec rake db:migrate
+  - bundle exec rake db:drop:all
 script: bundle exec rspec spec --profile
 after_script: RAILS_ENV='production' gem build dtf.gemspec
 notifications:
