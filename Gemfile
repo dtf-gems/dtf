@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 # Specify your gem's dependencies in dtf.gemspec
-group :development, :test do
+group :development do
   #gem "pry", :git => "https://github.com/pry/pry.git"
   #gem "pry-doc", :git => "https://github.com/pry/pry-doc.git"
   #gem "method_source", :git => "https://github.com/banister/method_source.git"
@@ -24,6 +24,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'turnip'
   gem 'rspec'
   gem 'rspec-given'
   gem 'fabrication'
