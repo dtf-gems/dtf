@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dtf-gems/dtf.png)](https://travis-ci.org/dtf-gems/dtf)
+[![Build Status](https://travis-ci.org/dtf-gems/dtf.png?branch=master,stable)](https://travis-ci.org/dtf-gems/dtf)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/dtf-gems/dtf)
 
 # Deryls Testing Framework
