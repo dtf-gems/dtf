@@ -21,7 +21,7 @@ class DtfSetup < Thor
 
     Dir["#{models_dir}/#{name}"].each do |model|
       puts "Generating app/models/#{File.basename(model)}"
-      FileUtils.cp(model, "#{Dir.pwd}/app/models/#{File.basename(model)}" )
+      FileUtils.cp(model, "#{Dir.pwd}/app/models")
     end
 
     other_files.each do |source|
