@@ -21,6 +21,7 @@ group :development do
   gem "pry-theme"
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'autotest'
 end
 
 group :test do
