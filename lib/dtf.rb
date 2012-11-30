@@ -5,13 +5,13 @@ require 'trollop'
 
 module Dtf
   load "#{File.join(File.dirname(__FILE__), "/config/environment.rb")}"
-  
+
   module Command
     def self.create_cmd(cmd)
       puts "#{@cmd}"
       begin
-        new_cmd = Dtf::Command.const_get(cmd.camelize).new    
-      rescue NameError  
+        new_cmd = Dtf::Command.const_get(cmd.camelize).new
+      rescue NameError
         puts "DTF has no registered command by that name."
         puts "Please see 'dtf -h' for the list of recognized commands."
       else
@@ -156,7 +156,7 @@ module Dtf
     end
 
   end # End of Dtf::Command module
-  
+
   # Dtf::ErrorSystem is DTF's custom error management class
   class ErrorSystem
     # Reusable error raising and response method.
@@ -179,7 +179,7 @@ module Dtf
       obj.errors.full_messages.all.each do |msg|
         $stderr.puts "#{msg}"
       end
-    end    
+    end
   end
 
   # Dtf::OptionsParser is DTF's command/options/parameters parsing class.
@@ -187,7 +187,7 @@ module Dtf
   class OptionsParser
     # List of all sub-commands known within the Help System
     SUB_COMMANDS = %w(create_user delete_user create_vs delete_vs)
-    
+
     # ARGV parsing method and options builder. Method depends on Trollop gem.
     #
     # Dynamically builds, and returns, the @cmd_opts Hash based on contents of @cmd,
@@ -243,9 +243,9 @@ module Dtf
       else
         Trollop::die "Unknown DTF sub-command: #{@cmd.inspect}"
       end
-      
-      return @cmd, @cmd_opts # Explicitly return @cmd and its @cmd_opts 
+
+      return @cmd, @cmd_opts # Explicitly return @cmd and its @cmd_opts
     end
   end
-  
+
 end # End of Dtf module
