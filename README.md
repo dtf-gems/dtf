@@ -19,7 +19,7 @@ DTF will gladly, and willingly, review any Pull Requests sent to us, and incorpo
 ## Branches
 DTF has a branching and tagging topology as follows, and applies to DTF and _all_ sub-module gems:
 
-  * master - This branch on the DTF control gem, and _all_ dtf-<blah> sub-module gems is for **development**
+	* master - This branch on the DTF control gem, and _all_ dtf-<blah> sub-module gems is for **development**
     
 	* stable - This branch on the DTF gem, and _all_ dtf-<blah> sub-modules, is 'stable' or 'production' quality. Anything on this branch is to be considered safe and usable for everyday stuff.
 
