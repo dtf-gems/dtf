@@ -26,3 +26,14 @@ end
 task :spec do
   Rake::Task['cover_me:report'].invoke
 end
+
+namespace :dtf do
+
+  desc "Install DTF thor tasks"
+  task :install do
+    require 'dtf'
+    puts "Installing DTF tasks"
+    FileUtils.cp(Dir.glob("#{File.join("#{Gem.loaded_specs['dtf'].gem_dir}", 'lib/tasks/*')}"), 'lib/tasks/')
+  end
+end
+

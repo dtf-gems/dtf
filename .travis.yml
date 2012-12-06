@@ -1,21 +1,33 @@
+language: ruby
+branches:
+  only:
+    - master
+    - stable
 rvm:
+  - 1.9.2
   - 1.9.3
+matrix:
+  allow_failures:
+    - rvm: 1.9.2
+env:
+  global:
+    RAILS_ENV='test'
 before_install:
   - gem update bundler
+install:
+  - bundle install --without development
 before_script:
-  - RAILS_ENV='development' bundle exec thor dtf_setup:config
-  - RAILS_ENV='development' bundle exec rake db:migrate
-  - RAILS_ENV='development' bundle exec gem list
-script: RAILS_ENV='development' bundle exec rspec spec --format doc
-language: ruby
+  - bundle exec gem list
+script: bundle exec rspec spec --profile
+after_script: RAILS_ENV='production' gem build dtf.gemspec
 notifications:
   irc:
     channels:
-      - "irc.freenode.org#dtf-gems"
-    on_success: always
+        - "irc.freenode.org#dtf-gems"
     on_failure: always
+    on_success: always
   email:
     recipients:
       - me@daviddwdowney.com
-    on_success: always
     on_failure: always
+    on_success: always

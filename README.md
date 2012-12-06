@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/dtf-gems/dtf.png?branch=master,stable)](https://travis-ci.org/dtf-gems/dtf)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/dtf-gems/dtf)
+
 # Deryls Testing Framework
 
 DTF is designed to be a modular framework for testing everything from shell scripts, to Ruby, to Rails apps.
@@ -183,5 +186,9 @@ Options:
          --id, -i <i>:   ID of VS to be deleted - REQUIRED
            --help, -h:   Show this message
 ```
+
+An unlisted command is 'setup_dtf'. This command is for use by sub-gems in the DTF framework.
+It copies the thor task from DTF's master gem 'dtf' to the proper directory in the sub-gem, or
+a project that makes use of the dtf master gem. It is referenced, but not shown here, for that reason.
 
 Enjoy!

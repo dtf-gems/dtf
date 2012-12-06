@@ -10,6 +10,6 @@ class AnalysisCase < ActiveRecord::Base
 
   belongs_to  :verification_suite, :autosave => :true
   belongs_to  :user, :autosave => :true
-  has_many :case_tests, :dependent => :destroy
+  has_many :case_tests, :include => :verification_suites, :dependent => :destroy
 
 end

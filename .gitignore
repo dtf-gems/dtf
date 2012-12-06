@@ -16,7 +16,6 @@ pmip
 .DS_Store
 *.rbc
 .svn/
-/db/config.yml
 *.gem
 InstalledFiles
 Gemfile.lock
