@@ -5,10 +5,23 @@ require 'active_record'
 require 'active_model'
 require 'active_support'
 require 'multi_json'
-require 'sqlite3'
+
+case RUBY_PLATFORM
+when "ruby"
+  require 'sqlite3'
+when "java"
+  require 'jdbc/sqlite3'
+  require 'java'
+end
+
 require 'yaml'
 require 'logger'
 require 'thor'
+
+# Set the YAML engine specifically to 'psych' when under JRuby
+if RUBY_PLATFORM == "java"
+  ::YAML::ENGINE.yamler = 'psych'
+end
 
 # NOTE: Set RAILS_ENV to 'production' for ActiveRecord. Affects the database to use.
 # Change this to 'development' while working on the gem itself, or set it in the

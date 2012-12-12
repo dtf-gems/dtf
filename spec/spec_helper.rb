@@ -1,10 +1,14 @@
 # encoding: UTF-8
-require 'cover_me'
 require 'dtf'
 require 'rspec'
 require 'turnip'
 require 'fabrication'
 require 'database_cleaner'
+
+# Set the YAML engine for JRuby
+if RUBY_PLATFORM == "java"
+  ::YAML::ENGINE.yamler = 'psych'
+end
 
 # Require any RSpec support files, helpers, and custom matchers we define
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each do |f|

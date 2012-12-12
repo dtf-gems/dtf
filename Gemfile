@@ -20,12 +20,20 @@ group :development do
   gem 'database_cleaner'
 end
 
+platforms :jruby do
+  gem "activerecord-jdbcsqlite3-adapter"
+  gem "jdbc-sqlite3"
+end
+
+platforms :ruby do
+  gem "sqlite3"
+end
+
 group :test do
   gem 'turnip'
   gem 'rspec'
   gem 'rspec-given'
   gem 'fabrication'
-  gem 'cover_me'
   gem 'database_cleaner'
 end
 

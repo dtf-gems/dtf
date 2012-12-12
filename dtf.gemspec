@@ -23,7 +23,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency "activerecord"
   gem.add_dependency "activemodel"
   gem.add_dependency "activesupport"
-  gem.add_dependency "sqlite3"
+
+  gem.add_dependency "sqlite3" if RUBY_PLATFORM == "ruby"
+
+  gem.add_dependency "jdbc-sqlite3" if RUBY_PLATFORM == "java"
+  gem.add_dependency "activerecord-jdbcsqlite3-adapter" if RUBY_PLATFORM == "java"
+
   gem.add_dependency "json"
   gem.add_dependency "json_pure"
   gem.add_dependency "standalone_migrations"
