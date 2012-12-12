@@ -28,6 +28,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "jdbc-sqlite3" if RUBY_PLATFORM == "java"
   gem.add_dependency "activerecord-jdbcsqlite3-adapter" if RUBY_PLATFORM == "java"
+  gem.add_dependency "jruby-openssl" if RUBY_PLATFORM == "java"
 
   gem.add_dependency "json"
   gem.add_dependency "json_pure"
