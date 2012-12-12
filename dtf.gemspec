@@ -32,7 +32,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "turnip"
   gem.add_development_dependency "rspec", [">=2.10.0"]
   gem.add_development_dependency "fabrication"
-  gem.add_development_dependency "vcr"
   gem.add_development_dependency "yard"      # For generating documentation
   gem.add_development_dependency "redcarpet" # For generating YARD docs
 end
