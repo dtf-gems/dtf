@@ -37,7 +37,8 @@ if ENV['RAILS_ENV'] == 'test' then
   puts "NOTICE: Loading db schema to IN-MEMORY SQLite3 db"
   load "#{File.join(File.dirname(__FILE__), '../../db/schema.rb')}"
 else
-  @dbconfig = YAML::load(File.open(File.join(File.dirname(__FILE__), '../../db/config.yml')))[ENV['RAILS_ENV']]
+  require 'erb'
+  @dbconfig = YAML::load(ERB.new(IO.read(File.expand_path('../../../db/config.yml', __FILE__))).result)[ENV['RAILS_ENV']]
   # Establish the database connection
   puts "NOTICE: Loading db schema to ON-DISK SQLite3 db"
   ActiveRecord::Base.establish_connection(@dbconfig) # Line that actually connects the db.
