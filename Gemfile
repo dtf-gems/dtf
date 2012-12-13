@@ -30,6 +30,13 @@ platforms :ruby do
   gem "sqlite3"
 end
 
+group :development do
+  if RUBY_PLATFORM == "java"
+    gem "jruby-lint"
+  end
+end
+
+end
 group :test do
   gem 'turnip'
   gem 'rspec'
