@@ -31,12 +31,9 @@ platforms :ruby do
 end
 
 group :development do
-  if RUBY_PLATFORM == "java"
-    gem "jruby-lint"
-  end
+    gem "jruby-lint", :platforms => "jruby"
 end
 
-end
 group :test do
   gem 'turnip'
   gem 'rspec'
