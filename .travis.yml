@@ -1,4 +1,5 @@
 language: ruby
+bundler_args: --without development
 branches:
   only:
     - master
@@ -6,19 +7,41 @@ branches:
 rvm:
   - 1.9.3
   - 1.9.2
-  - rbx-19mode
   - jruby-19mode
+  - jruby-head
+  - rbx-19mode
+jdk:
+  - openjdk6
+  - openjdk7
+  - oraclejdk7
 matrix:
   allow_failures:
-    - rvm: 1.9.2
     - rvm: jruby-19mode
+    - rvm: jruby-head
+  exclude:
+    - rvm: 1.9.3
+      jdk: openjdk7
+    - rvm: 1.9.3
+      jdk: openjdk6
+    - rvm: 1.9.3
+      jdk: oraclejdk7
+    - rvm: 1.9.2
+      jdk: openjdk7
+    - rvm: 1.9.2
+      jdk: openjdk6
+    - rvm: 1.9.2
+      jdk: oraclejdk7
+    - rvm: rbx-19mode
+      jdk: openjdk7
+    - rvm: rbx-19mode
+      jdk: openjdk6
+    - rvm: rbx-19mode
+      jdk: oraclejdk7
 env:
   global:
     RAILS_ENV='test'
 before_install:
   - gem update bundler
-install:
-  - bundle install --without development
 before_script:
   - bundle exec gem list
 script: bundle exec rspec spec --profile
