@@ -9,6 +9,15 @@ DTF is an umbrella which is designed to incorporate multiple sub-gems, each of w
 ## Internal architecture
 DTF is designed in such a way that, with the master skeleton in place, one has only to load additional plugins from any available DTF extension gem to add additional functionality. This can be anything ranging from additional languages such as Ruby, Python, C, C++, etc, to testing methods and methodologies.
 
+## Supported Ruby Implementations
+Currently, DTF supports the following Ruby implementations:
+
+  - [Rubinius](https://github.com/rubinius/rubinius)
+  - [MRI](https://github.com/ruby/ruby) [Matz's Ruby Implementation]
+  - [JRuby](https://github.com/jruby/jruby)
+
+DTF only supports v1.9 under each implementation. v1.8 is *not* supported! *DTF will not backport v.18 support!*
+
 ## Current Status
 DTF is 100% Alpha quality right now. For those that do not know what that means, generally this means DTF is comprised of code with a vastly high potential for buggy code that may or may not even run. Consider DTF to be experimental until further notice. This README will be updated to reflect when DTF reaches a   'stable' quality.
 
@@ -27,7 +36,7 @@ DTF has a branching and tagging topology as follows, and applies to DTF and _all
 
   - feature/<blah> branches are **development** quality only. This is for work on individual new features that _will_ be rolled into DTF or sub-module gems.
 
-  - playground/<blah> branches are **alpha** quality only. These are for developers to work out either feasibilty of way-in-the-future ideas or to try something out that may, or may not, be incorporated into the DTF or its sub-modules. _These are 100% to9 be considered throw-aways. They could disappear at any moment, and any user of the DTF framework that relies on these branches is on their own. NO SUPPORT will be provided of any kind for these branches_ so everyone is clear on that.
+  - playground/<blah> branches are **alpha** quality only. These are for developers to work out either feasibilty of way-in-the-future ideas or to try something out that may, or may not, be incorporated into the DTF or its sub-modules. _These are 100% to be considered throw-aways. They could disappear at any moment, and any user of the DTF framework that relies on these branches is on their own. NO SUPPORT will be provided of any kind for these branches_ so everyone is clear on that.
 
   - All 'stable' production releases will be tagged. Only those releases will be tagged starting with a v, and a series like #.#.#  where the first '#' starts with 1 going to whatever, in progressive order. This represents an industry standard versioning format. NOTE: v0.#.# is NOT considered a 'stable' release! This is normal in the industry for Projects just starting out. When a version is reached that we believe to be of sufficient quality to be denoted, and tagged, as our first Stable release, it will be marked as v1.#.# and NOT v0.#.#. The remaining '#' in the example denote our Minor, and Change '#' levels. For example, #.#.# is Major.Minor.Change_Number_within_Minor. 	This means the following. Given a 'v2.3.4' tag,this would denote:
     
@@ -70,7 +79,7 @@ Usage:
   thor dtf_setup:install
 
 Options:
-  [--force]  
+  [--force]
 
 Installs database migrations, the main schema, and configuration files
 ```
@@ -83,7 +92,7 @@ Usage:
   thor dtf_setup:config [NAME]
 
 Options:
-  [--force]  
+  [--force]
 
 Copy db configuration file(s)
 ```
