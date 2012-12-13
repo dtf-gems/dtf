@@ -16,7 +16,7 @@ Currently, DTF supports the following Ruby implementations:
   - [MRI](https://github.com/ruby/ruby) [Matz's Ruby Implementation]
   - [JRuby](https://github.com/jruby/jruby)
 
-DTF only supports v1.9 under each implementation. v1.8 is *not* supported! *DTF will not backport v.18 support!*
+DTF only supports v1.9 under each implementation. v1.8 is *not* supported! *DTF will not backport v1.8 support!*
 
 ## Current Status
 DTF is 100% Alpha quality right now. For those that do not know what that means, generally this means DTF is comprised of code with a vastly high potential for buggy code that may or may not even run. Consider DTF to be experimental until further notice. This README will be updated to reflect when DTF reaches a   'stable' quality.
