@@ -7,6 +7,8 @@ branches:
 rvm:
   - 1.9.3
   - 1.9.2
+  - ruby-head
+  - 2.0.0
   - jruby-19mode
   - jruby-head
   - rbx-19mode
