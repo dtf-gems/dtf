@@ -10,6 +10,7 @@ rvm:
 matrix:
   allow_failures:
     - rvm: 1.9.2
+    - rvm: jruby-19mode
 env:
   global:
     RAILS_ENV='test'
