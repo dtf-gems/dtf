@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.require_paths     = ["lib"]
   gem.version           = Dtf::VERSION
   gem.rubyforge_project = "dtf"
-  gem.required_ruby_version = ">= 1.9.2"
+  gem.required_ruby_version = ">= 1.9.3"
 
   gem.add_dependency "thor"
   gem.add_dependency "rake"
@@ -30,12 +30,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency "activerecord-jdbcsqlite3-adapter" if RUBY_PLATFORM == "java"
   gem.add_dependency "jruby-openssl" if RUBY_PLATFORM == "java"
 
-  gem.add_dependency "json"
-  gem.add_dependency "json_pure"
   gem.add_dependency "standalone_migrations"
   gem.add_dependency "trollop" # This implements the help system
 
   gem.add_development_dependency "turnip"
   gem.add_development_dependency "rspec", [">=2.10.0"]
   gem.add_development_dependency "fabrication"
-end
+  gem.add_development_dependency "json"
+  gem.add_development_dependency "json_pure"
+ end
