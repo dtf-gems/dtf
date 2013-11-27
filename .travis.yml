@@ -6,7 +6,6 @@ branches:
     - stable
 rvm:
   - 1.9.3
-  - 1.9.2
   - ruby-head
   - jruby-19mode
   - jruby-head
@@ -14,7 +13,6 @@ rvm:
 matrix:
   allow_failures:
     - rvm: jruby-head
-    - rvm: jruby-19mode
 jdk:
   - oraclejdk7
 env:
