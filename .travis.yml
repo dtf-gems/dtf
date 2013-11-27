@@ -9,13 +9,11 @@ rvm:
   - ruby-head
   - jruby-19mode
   - jruby-head
-  - rbx-2.2.1
-  - rbx-head
+  - rbx
 matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
-    - rvm: rbx-head
 jdk:
   - oraclejdk7
 env:
