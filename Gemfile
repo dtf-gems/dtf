@@ -12,6 +12,10 @@ platforms :ruby do
   gem 'sqlite3'
 end
 
+platforms :rbx do
+  gem 'rubysl', '~> 2.0'
+end
+
 group :development do
   gem 'pry'
   gem 'pry-doc'
